@@ -1,0 +1,65 @@
+.listItem {
+  position: relative;
+  cursor: pointer;
+  padding-left: 31px;
+  font-family: 'Montserrat', 'sans-serif';
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--darker-color);
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.listItem input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.listItem .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 24px;
+  width: 24px;
+  border: 1px solid var(--dark-gray-color);
+  border-radius: 4px;
+}
+
+.listItem .checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.listItem input:checked ~ .checkmark::after {
+  display: block;
+}
+
+.listItem .checkmark::after {
+  left: 50%;
+  top: 50%;
+  width: 5px;
+  height: 15px;
+  border: solid var(--light-color);
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.listItem input:checked ~ .checkmark {
+  background-color: var(--primary-color);
+  border: none;
+}
+
+.listItem--selected {
+  text-decoration-line: line-through;
+  color: var(--dark-color);
+}
+
+.listItem i {
+  color: var(--gray-color);
+}
