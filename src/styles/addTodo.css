@@ -1,0 +1,27 @@
+.addTodo {
+  display: flex;
+}
+
+.addTodo input {
+  flex: 1;
+  padding: 20px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--gray-color);
+  outline: none;
+}
+
+.addTodo input::placeholder {
+  font-family: 'Montserrat', 'sans-serif';
+  font-size: 14px;
+  color: var(--dark-gray-color);
+}
+
+.addTodo button {
+  padding: 20px 40px;
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  margin-left: 25px;
+}

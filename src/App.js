@@ -1,24 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
+import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
+import Tab from './components/tab';
+import Todos from './components/todos';
 
 function App() {
+  const completedRouteMatch = useRouteMatch({
+    path: '/completed',
+  })
+  const contentClass = !completedRouteMatch ? 'content content--padding' : 'content';
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <section className="App">
+      <header>
+        <h1>#todo</h1>
+        <nav>
+          <Tab to="/all">All</Tab>
+          <Tab to="/active">Active</Tab>
+          <Tab to="/completed">Completed</Tab>
+        </nav>
       </header>
-    </div>
+      <section className={contentClass}>
+        <Switch>
+          <Route path="/" exact>
+            <Redirect to="/all" />
+          </Route>
+          <Route path="/all">
+            <Todos />
+          </Route>
+          <Route path="/active">
+            <Todos active />
+          </Route>
+          <Route path="/completed">
+            <Todos completed />
+          </Route>
+        </Switch>
+      </section>
+    </section>
   );
 }
 
